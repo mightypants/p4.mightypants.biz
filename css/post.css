@@ -1,0 +1,116 @@
+.profilePicSmall {
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin: 5px 15px 5px 10px;
+    background-color: #caa;
+    float: left;
+}
+
+form {
+    margin: 20px 0;
+}
+
+.reqTextField {
+    width: 473px;
+    height: 37px;
+    resize: none;
+    float: left;
+}
+
+.submitBtn {
+    width: 130px;
+    height: 50px;
+    margin: 11px 10px; 
+    background-color: #417D7F;
+    color: #fff; 
+    float: left; 
+}
+
+.submitBtn:hover {
+    background-color: #10f010;
+    color: #fff; 
+    cursor:pointer;
+}
+
+.error {
+    height: 20px;
+    margin: 0 0 0 5px;
+    font-size: .9em;
+    color: #f01010;
+    float: left;
+}
+
+.success {
+    height: 20px;
+    margin: 0 0 0 5px;
+    font-size: .9em;
+    color: #10f010;
+    float: left;
+}
+
+.postRight {
+    overflow: auto;
+    width: 515px;
+    margin-top: 5px;
+    float: left;
+}
+
+#postWrapper {
+    width: 630px;
+    min-height: 200px;
+}
+
+article {
+    margin-bottom: 15px;
+    padding: 5px 7px;
+    background-color: #e6f6f8;
+    border-radius: 12px;
+}
+
+.postRight p {
+    margin: 10px 0;
+}
+
+time {
+    display: block;
+    font-size: .7em;
+    float: right;
+}
+
+.delPost:link, .delPost:visited, .delPost:hover, .delPost:active {
+    display: block;
+    margin: 0;
+    float: right;
+    font-size: .9em;
+}
+
+#userList {
+    width: 186px;
+    padding: 15px 10px;
+    background-color: #e6f6f8;
+    border-radius: 12px;
+
+}
+
+#userList h2 {margin: 0 3px 10px 3px; border-bottom: 1px solid #96C6C8;}
+
+
+.userLink {
+    margin-left: 3px;
+    font-weight: bold;
+}
+
+.userLink a {
+    font-weight: normal;
+}
+
+.follow:link, .follow:hover, .follow:visited, .follow:active {
+    font-size: .8em;
+}
+
+.profilePic {
+    margin: 0 3px;
+}
+
+
