@@ -8,11 +8,15 @@ event listeners
 ***********************************************************************************/
 
 $('.userCell').click(function(){
-	giveFocus(this);
+		console.log('clicked');
+		giveFocus(this);
+		//console log working but focus not
 });
 
 $('body').keydown(function(){
 	enterNum(event.which);
+	console.log('key pressed');
+
 });
 
 $('#clearCell').click(function(){

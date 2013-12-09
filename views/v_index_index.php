@@ -1,11 +1,5 @@
 <p>
-	Hello World! You have successfully spawned a new application.
+	Welcome to jDoku.  Log in or sign up to track your puzzle solving stats, or just select a difficulty level and start solving now. 
 </p>
-
-<p>
-	This message is being triggered via the c_index.php controller, within the index() method.
-</p>
-
-<p>
-	<strong>Since everything is in working order, you should now delete <?php echo APP_PATH?>diagnostics.php</strong>
-</p>
+<input type="button" value="Start Puzzle" id="startPuzzle" />
+<div id="results"></div>

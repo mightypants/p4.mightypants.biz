@@ -1,0 +1,46 @@
+#puzzle {
+	width: 355px;
+	margin: 0 auto;
+	padding: 10px;
+	background-color: #4a5a99;
+}
+
+.cell {
+	display: inline-block;
+	vertical-align: top;
+	width: 35px;
+	height: 35px;
+	margin: 2px;
+	background-color: white;
+	text-align: center;
+	font-size: 2em;
+	color: black;
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.botThick {
+	margin-bottom: 4px;
+}
+
+.rightThick {
+	margin-right: 4px;
+}
+
+.userCell {
+	color: #36c;
+}
+
+.errorCell {
+	color: red;
+}
+
+.messed {
+	width: 30px;
+	height: 30px;
+	background-color: #ecc;
+	border: 0px;
+}

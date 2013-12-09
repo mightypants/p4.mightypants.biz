@@ -10,11 +10,11 @@
             echo "<p class=\"error\">The area you have tried to access is for members only.  Please login and try again.</p>";
         }   
         else {
-            echo "<p>Please login with your username and password below.  If you don't have an account, <a href=\"/users/signup\">sign up here</a>.</p>";
+            echo "<p>Please login with your username and password below.  If you don't have an account, <a id=\"singupLink\" href=\"/users/signup\">sign up here</a>.</p>";
         }      
     }
     else {
-        echo "<p>Please login with your username and password below.  If you don't have an account, <a href=\"/users/signup\">sign up here</a>.</p>";
+        echo "<p>Please login with your username and password below.  If you don't have an account, <a id=\"singupLink\" href=\"users/signup\">sign up here</a>.</p>";
     }
 ?> 
 
@@ -31,4 +31,3 @@
     </div>
     <input type='submit' class="submitBtn" id="frmSubmit" value='Login' />   
 </form>
-

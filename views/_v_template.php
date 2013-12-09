@@ -5,6 +5,9 @@
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />	
+	<link rel="stylesheet" type="text/css" href="/css/form.css" />	
+	<link rel="stylesheet" type="text/css" href="/css/puzzle.css" />	
+	<link rel="stylesheet" type="text/css" href="/css/layout_tall.css" />	
 					
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
@@ -46,16 +49,15 @@
 		</div>
 		" ; 
 	?>
-	<?php if(isset($contentLeftBot)) echo 
-		"<div id=\"contentLeftBot\"> 
-			$contentLeftBot 
-		</div>
-		<br class=\"clearfloat\" />" ; 
-	?>
 	<br class="clearfloat" />
-	<?php if(isset($client_files_body)) echo $client_files_body; ?>
 
 	</div>
-	<div id="foot">+1 Features: View/Edit profiles | Delete posts</div>
+
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<script type="text/javascript" src="js/form.js"></script>
+
 </body>
 </html>

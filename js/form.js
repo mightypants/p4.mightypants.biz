@@ -138,6 +138,32 @@ for (i = 0; i < tooltips.length; i++) {
 }
 
 
+// Set up the options for ajax
+var options = { 
+    type: 'POST',
+    url: '/users/p_signup/',
+    beforeSubmit: function() {
+        $('#results').html("Adding...");
+    },
+    success: function(response) {   
+        $('#results').html(response);
+    } 
+}; 
+
+// Using the above options, ajax'ify the form
+$('form').ajaxForm(options);
 
 
+$.ajaxSetup ({  
+        cache: false  
+    });  
+    var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+      
+//  load() functions  
+    /*var loadUrl = "/users/signup";  
+    $("#singupLink").click(function(){  
+                console.log('clicked');
+		$("#contentRight").html(ajax_load).load(loadUrl);
+		return false;
+    }); */
 

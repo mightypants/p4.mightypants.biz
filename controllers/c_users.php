@@ -7,18 +7,7 @@ class users_controller extends base_controller {
 
     public function signup($message = NULL) {
         # Setup view
-        $output = $this->template;
-        $output->title   = "Sign Up";
-        $output->contentLeft = View::instance('v_index_index');
-        $output->contentRight = View::instance('v_users_signup');
-        $output->contentRight->message = $message;
-
-        # Set client files within the header and body
-        $client_files_head = Array("/css/form.css","/css/layout_short.css");
-        $output->client_files_head = Utils::load_client_files($client_files_head);  
-        $client_files_body = Array("/js/form.js");
-        $output->client_files_body = Utils::load_client_files($client_files_body);
-
+        $output = View::instance('v_users_signup');
         echo $output;
 
     }
@@ -37,10 +26,10 @@ class users_controller extends base_controller {
         }
 
         if ($user_exists || $email_exists) {
-            Router::redirect("/users/signup/user_exists");
+            echo 'user exists';
         }
         elseif (!empty($formErrors)) {
-            Router::redirect("/users/signup/error");
+            echo 'you have some problems';
         }
         else {
             # More data we want stored with the user
@@ -54,8 +43,9 @@ class users_controller extends base_controller {
             $_POST['token'] = sha1(TOKEN_SALT.$_POST['user_name'].Utils::generate_random_string()); 
 
             # Insert this user into the database
-            $user_id = DB::instance(DB_NAME)->insert('users', $_POST); 
-            Router::redirect("/users/login/success");
+            //$user_id = DB::instance(DB_NAME)->insert('users', $_POST); 
+            //Router::redirect("/index/index/signup_success");
+            echo 'new user created';
         }
     }
 
