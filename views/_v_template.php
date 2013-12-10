@@ -7,8 +7,10 @@
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />	
 	<link rel="stylesheet" type="text/css" href="/css/form.css" />	
 	<link rel="stylesheet" type="text/css" href="/css/puzzle.css" />	
-	<link rel="stylesheet" type="text/css" href="/css/layout_tall.css" />	
-					
+	<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.form.js"></script>
+
+
 	<!-- Controller Specific JS/CSS -->
 	<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	
@@ -53,11 +55,8 @@
 
 	</div>
 
-<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="js/jquery.form.js"></script>
-<script type="text/javascript" src="js/game.js"></script>
-<script type="text/javascript" src="js/form.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
+
 
 </body>
 </html>

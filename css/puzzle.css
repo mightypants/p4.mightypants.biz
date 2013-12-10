@@ -11,7 +11,7 @@
 	width: 35px;
 	height: 35px;
 	margin: 2px;
-	background-color: white;
+	background-color: #ffffff;
 	text-align: center;
 	font-size: 2em;
 	color: black;
@@ -38,9 +38,29 @@
 	color: red;
 }
 
+.focusCell {
+	background-color: #dee0f0;
+}
+
 .messed {
 	width: 30px;
 	height: 30px;
 	background-color: #ecc;
 	border: 0px;
+}
+
+.puzzleBtn {
+	margin: 10px;
+    padding: 5px 12px;
+    background-color: #417D7F;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.puzzleBtn:hover {
+   background-color: #10f010;
+    color: #fff; 
+    cursor:pointer;
 }

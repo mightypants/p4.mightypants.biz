@@ -9,7 +9,6 @@ class users_controller extends base_controller {
         # Setup view
         $output = View::instance('v_users_signup');
         echo $output;
-
     }
 
     public function p_signup() {
@@ -26,10 +25,10 @@ class users_controller extends base_controller {
         }
 
         if ($user_exists || $email_exists) {
-            echo 'user exists';
+            echo 'The e-mail or username you have selected is already in use.';
         }
         elseif (!empty($formErrors)) {
-            echo 'you have some problems';
+            echo 'There were errors with some of your entries.';
         }
         else {
             # More data we want stored with the user

@@ -154,16 +154,4 @@ var options = {
 $('form').ajaxForm(options);
 
 
-$.ajaxSetup ({  
-        cache: false  
-    });  
-    var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
-      
-//  load() functions  
-    /*var loadUrl = "/users/signup";  
-    $("#singupLink").click(function(){  
-                console.log('clicked');
-		$("#contentRight").html(ajax_load).load(loadUrl);
-		return false;
-    }); */
 

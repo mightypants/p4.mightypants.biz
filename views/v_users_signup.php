@@ -1,17 +1,3 @@
-<?php 
-    /*
-    if($message == "user_exists") {
-        echo "<p class=\"error\">Another account exists with the username and/or e-mail you entered.  Please try again.</p>";
-    }
-    elseif($message == "error") {
-        echo "<p class=\"error\">There were errors with your entries. Hover of the ? next to each field for more info.</p>";
-    }
-    else {
-        echo "<p>Please fill out all fields below to create your account.</p>";
-    }
-    */
-?> 
-
 <form id="signupFrm" method="POST">
     <div class="reqField">
         <p class="fieldName">Username:</p>
@@ -38,3 +24,4 @@
 </form>
 
 <div id="results"></div>
+<script type="text/javascript" src="/js/form.js"></script>

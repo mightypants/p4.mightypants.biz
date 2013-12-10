@@ -1,22 +1,4 @@
-<?php 
-    if(isset($message)) {
-        if($message == 'success') {
-            echo "<p class=\"success\">Your account has been created successfully, please log in below.</p>";
-        }
-        elseif($message == 'error') {
-            echo "<p class=\"error\">Login failed. Please double check your username and password and try again.</p>";
-        }
-        elseif($message == 'access_denied') {
-            echo "<p class=\"error\">The area you have tried to access is for members only.  Please login and try again.</p>";
-        }   
-        else {
-            echo "<p>Please login with your username and password below.  If you don't have an account, <a id=\"singupLink\" href=\"/users/signup\">sign up here</a>.</p>";
-        }      
-    }
-    else {
-        echo "<p>Please login with your username and password below.  If you don't have an account, <a id=\"singupLink\" href=\"users/signup\">sign up here</a>.</p>";
-    }
-?> 
+<p>Please login with your username and password below.  If you don't have an account, <a class="ajaxLink" href="/users/signup">sign up here</a>.</p>
 
 <form id="contactFrm" method="POST" action="/users/p_login">
     <div class="reqField">
@@ -31,3 +13,7 @@
     </div>
     <input type='submit' class="submitBtn" id="frmSubmit" value='Login' />   
 </form>
+
+<div id="results"></div>
+
+<script type="text/javascript" src="/js/form.js"></script>
