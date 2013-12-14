@@ -19,21 +19,7 @@
 <body>	
 
 	<div id="nav">
-        <a href='/'>Home</a>
-
-        <!-- Menu for users who are logged in -->
-        <?php if($user): ?>
-
-            <a href='/users/logout'>Logout</a>
-            <a href='/users/profile'>Profile</a>
-
-        <!-- Menu options for users who are not logged in -->
-        <?php else: ?>
-
-            <a href='/users/signup'>Sign up</a>
-            <a href='/users/login'>Log in</a>
-
-        <?php endif; ?>
+        <!--<?php if(isset($banner_right)) echo $banner_right; ?>-->
 
 	</div>
 	<div id="wrapper">
@@ -55,8 +41,8 @@
 
 	</div>
 
-	<script type="text/javascript" src="js/utils.js"></script>
-
+	<script type="text/javascript" src="/js/utils.js"></script>
+	<script type="text/javascript" src="/js/form.js"></script>
 
 </body>
 </html>

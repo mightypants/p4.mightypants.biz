@@ -138,20 +138,42 @@ for (i = 0; i < tooltips.length; i++) {
 }
 
 
-// Set up the options for ajax
-var options = { 
+var loginOptions = { 
     type: 'POST',
-    url: '/users/p_signup/',
+    url: '/users/p_login/',
     beforeSubmit: function() {
         $('#results').html("Adding...");
     },
     success: function(response) {   
-        $('#results').html(response);
+        $("#contentRight").css('display','none');
+		$('#contentRight').html(response);	
+		$("#contentRight").fadeIn('slow');
     } 
 }; 
 
-// Using the above options, ajax'ify the form
-$('form').ajaxForm(options);
+var signupOptions = { 
+    type: 'POST',
+    url: '/users/p_signup/',
+    beforeSubmit: function() {},
+    success: function(response) {   
+        if (response.indexOf('errors') >= 0 ||
+        	response.indexOf('already in use') >= 0  ) {
+        	errorMsg(response);
+		}
+		else {
+			$("#contentRight").css('display','none');
+			$('#contentRight').html(response);	
+			$("#contentRight").fadeIn('fast');
+		}
+    } 
+}; 
 
+function errorMsg(msg){
+	$('#message').text(msg);
+}
+
+// Using the above options, ajax'ify the form
+//$('#loginFrm').ajaxForm(loginOptions);
+$('#signupFrm').ajaxForm(signupOptions);
 
 

@@ -26,3 +26,28 @@ $("#startPuzzle").click(function(){
 
 	return false;
 }); 
+
+$('.difficultySelect').click(function(){
+	setDifficulty(this);
+});
+
+var difficulty;
+
+var diffMap = {'easy': 0, 'medium': 1, 'hard': 2, 'vhard': 3}
+
+function setDifficulty(btn){
+	if (difficulty != null) {
+		unsetDifficulty();
+	}
+
+	difficulty = diffMap[btn.id];
+	btn.src = '/images/' + btn.id + '_set.png';
+}
+
+function unsetDifficulty(){
+	var diffBtns = $('.difficultySelect');
+	for (btn in diffBtns) {
+		btn.src = '/images/' + btn.id + '.png';
+			console.log(btn.id);
+	}
+}

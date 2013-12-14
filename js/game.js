@@ -12,7 +12,6 @@ event listeners
 
 $('.userCell').click(function(){
 		giveFocus(this);
-		//console log working but focus not
 });
 
 $('body').keydown(function(){
@@ -39,6 +38,10 @@ $('#pauseTimer').click(function(){
 	pauseTimer();
 });
 	
+$('#saveGame').click(function(){
+	saveGame();
+});
+
 function giveFocus(el){
 	if (elWithFocus != null) {
 		loseFocus();
@@ -79,7 +82,6 @@ function enterNum(keyPressed){
 	}
 
 	answeredCells++;
-	console.log(answeredCells);
 	if (answeredCells == noHintCells) {
 		checkAnswers();
 	}
@@ -91,7 +93,6 @@ function clearCell(){
 	loseFocus();
 
 	answeredCells--;
-	console.log(answeredCells);
 }
 
 function clearAll(){
@@ -100,8 +101,6 @@ function clearAll(){
 	loseFocus();
 
 	answeredCells = 0;
-	console.log(answeredCells);
-
 }
 
 function checkAnswers(){
@@ -141,5 +140,27 @@ function pauseTimer(){
 	clearInterval(intervalHandle);
 }
 
+function saveGame(){
+	var allCells = $('.cell');
+	var cellAnswers = '';
+
+	for (i = 0; i < allCells.length; i++) {
+		var cellAnswer = $('#cell' + i).text();
+		
+		if (!cellAnswer) {
+			cellAnswer = '0';
+		} 
+
+		cellAnswers += cellAnswer;
+	}
+
+	var gameID = $('#gameID').text();
+	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+    var loadUrl = '/puzzles/save_game';
+	$("#results").html(ajax_load).load(loadUrl, {time: timerSeconds, answers: cellAnswers, gameID: gameID});
+	//console.log('time = ' + timerSeconds + ' seconds; answers: ' + cellAnswers);
+	return false;
+
+}
 	
 

@@ -15,9 +15,14 @@ class index_controller extends base_controller {
 	public function index($message = NULL) {
 		
 		$output = $this->template;
-		$output->contentRight = View::instance('v_index_index') . View::instance('v_users_login');
-		$output->contentLeft = View::instance('v_users_stats');
-			
+		$output->contentRight = View::instance('v_index_index') ;
+		$output->contentRight->message = $message;
+		$output->contentLeft = View::instance('v_users_login');
+		
+		if (!$this->user) {
+			$output->banner_right = View::instance('v_users_login') ;
+		}
+
 		# Now set the <title> tag
 		$output->title = "jDoku";
 	      					     		
