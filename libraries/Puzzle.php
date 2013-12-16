@@ -97,18 +97,47 @@ class Puzzle {
 
     }
 
-    public function save_game($time, $answers, $game_token){
+    public function save_game($time, $answers, $complete, $game_token){
 
         $data = array(
             'time' => $time,
             'answers' => $answers,
-            'game_token' => $game_token
+            'game_token' => $game_token,
+            'complete' => $complete
         );
 
         
         DB::instance(DB_NAME)->update("games", $data, "WHERE game_token = '".$game_token."'");
         
-        //print_r($data);
+    }
+
+    public function check_answers($user_answers, $g_token){
+        $check_results = array();
+
+        $q = "SELECT solution FROM games g 
+                LEFT JOIN puzzles p ON g.puzzle_id=p.puzzle_id 
+                WHERE game_token=" . "'" . $g_token . "'";
+
+        $puzzle_solution = DB::instance(DB_NAME)->select_field($q);
+
+        $arr_user_answers = str_split($user_answers);
+        $arr_solution = str_split($puzzle_solution);
+
+        //print_r($arr_user_answers);
+        for ($i = 0; $i < 81; $i++) {
+            //if (($arr_user_answers[$i] == $arr_solution[$i]) ||
+            //    ($arr_user_answers[$i] == 0) ) {
+                array_push($check_results, 1);
+                //echo '1';
+            //}
+            //else {
+            //    array_push($check_results, 0);
+                //echo '0';
+            //}
+        }
+
+        echo json_encode($check_results);
+
     }
 
     public function get_recent_games(){

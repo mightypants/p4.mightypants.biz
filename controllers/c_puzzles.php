@@ -24,9 +24,15 @@ class puzzles_controller extends base_controller {
     public function save_game(){
         $time = $_POST['time'];
         $answers = $_POST['answers'];
+        $complete = $_POST['complete'];
+
         $game_token = $_COOKIE['game_token'];
 
-        $this->puzzle->save_game($time, $answers, $game_token);
+        $this->puzzle->save_game($time, $answers, $complete, $game_token);
+    }
+
+    public function check_answers(){
+         $this->puzzle->check_answers($_POST['answers'], $_COOKIE['game_token']);
     }
 
 

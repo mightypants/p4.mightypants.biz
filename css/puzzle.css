@@ -1,8 +1,18 @@
 #puzzle {
+	position: relative;;
 	width: 355px;
 	margin: 0 auto;
 	padding: 10px;
 	background-color: #4a5a99;
+}
+
+#hidePuzzle {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 365px;
+	height: 365px;
+	background-color: #000;
 }
 
 .cell {

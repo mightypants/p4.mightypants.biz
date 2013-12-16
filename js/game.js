@@ -1,9 +1,8 @@
 var solution = [5,1,3,6,9,8,2,4,7,7,6,4,1,5,2,8,3,9,2,9,8,7,3,4,5,6,1,6,5,9,3,2,7,1,8,4,8,4,7,5,6,1,9,2,3,1,3,2,4,8,9,7,5,6,4,7,5,8,1,6,3,9,2,9,8,6,2,7,3,4,1,5,3,2,1,9,4,5,6,7,8];	    
 var elWithFocus;
-var noHintCells = $('.userCell').length;
-console.log(noHintCells);
-var answeredCells = 0;
 var timerSeconds = 0;
+var pauseKey = 0;
+
 
 
 /***********************************************************************************
@@ -11,11 +10,12 @@ event listeners
 ***********************************************************************************/
 
 $('.userCell').click(function(){
-		giveFocus(this);
+	giveFocus(this);
 });
 
 $('body').keydown(function(){
 	enterNum(event.which);
+	checkRemainingCells();
 });
 
 $('#clearCell').click(function(){
@@ -30,16 +30,17 @@ $('#checkAnswers').click(function(){
 	checkAnswers();
 });
 
-$('#startTimer').click(function(){
-	startTimer();
-});
-
-$('#pauseTimer').click(function(){
-	pauseTimer();
+$('#pauseBtn').click(function(){
+	toggleStartPause();
 });
 	
 $('#saveGame').click(function(){
-	saveGame();
+	saveGame('no');
+});
+
+$('#hidePuzzle').click(function(){
+	$(this).fadeOut();
+	startTimer();
 });
 
 function giveFocus(el){
@@ -79,41 +80,62 @@ function enterNum(keyPressed){
 
 	if (numkeyPressed) {
 		$(elWithFocus).text(numkeyPressed);
+		$(elWithFocus).removeClass('errorCell');
 	}
 
-	answeredCells++;
-	if (answeredCells == noHintCells) {
-		checkAnswers();
-	}
 }
 
 function clearCell(){
 	$(elWithFocus).empty();
 	$(elWithFocus).removeClass('errorCell');
 	loseFocus();
-
-	answeredCells--;
 }
 
 function clearAll(){
 	$('.userCell').empty();
-	$(elWithFocus).removeClass('errorCell');	
+	$('.userCell').removeClass('errorCell');	
 	loseFocus();
-
-	answeredCells = 0;
 }
 
-function checkAnswers(){
-	var allCells = $('.cell');
+function checkAnswers(remaining){
+	cellAnswers = collectAnswers();
 
-	for (i = 0; i < allCells.length; i++) {
-		var cellAnswer = $('#cell' + i).text();
-		
-		if (cellAnswer != 0) {
-			if (cellAnswer != solution[i]) {
-				$('#cell' + i).addClass('errorCell');
-			}
+	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+    var loadUrl = '/puzzles/check_answers';
+	$.post(loadUrl, {answers: cellAnswers}, function(response){
+		responseArray = JSON.parse(response);
+		showErrors(responseArray, remaining);
+	});	
+}
+
+function checkRemainingCells(){
+	remainingCells = 0;
+	allUserCells = $('.userCell')
+	
+	for (i = 0; i < allUserCells.length; i++) {
+		if($(allUserCells[i]).text() == ''){
+			remainingCells++;
 		}
+	}
+
+	if (remainingCells == 0) {
+		checkAnswers(remainingCells);
+	}
+	
+}
+
+function showErrors(results, remaining){
+	var errorCells = 0;
+	
+	for (i = 0; i < 81; i++) {
+		if (results[i] == 0) {
+			$('#cell' + i).addClass('errorCell');
+			errorCells++;
+		}
+	}
+
+	if (errorCells == 0 && remaining == 0) {
+		puzzleComplete();
 	}
 }
 
@@ -134,13 +156,28 @@ function tick(){
 
 function startTimer(){
 	intervalHandle = setInterval(tick, 1000)
+	$('#hidePuzzle').hide();
+
 }
 
 function pauseTimer(){
 	clearInterval(intervalHandle);
+	$('#hidePuzzle').show();
+	loseFocus();
 }
 
-function saveGame(){
+function saveGame(complete){
+	
+	cellAnswers = collectAnswers();
+
+	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+    var loadUrl = '/puzzles/save_game';
+	
+	$("#results").html(ajax_load).load(loadUrl, {time: timerSeconds, answers: cellAnswers, complete: complete});
+	return false;
+}
+
+function collectAnswers() {
 	var allCells = $('.cell');
 	var cellAnswers = '';
 
@@ -154,12 +191,27 @@ function saveGame(){
 		cellAnswers += cellAnswer;
 	}
 
-	var gameID = $('#gameID').text();
-	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
-    var loadUrl = '/puzzles/save_game';
-	$("#results").html(ajax_load).load(loadUrl, {time: timerSeconds, answers: cellAnswers, gameID: gameID});
-	//console.log('time = ' + timerSeconds + ' seconds; answers: ' + cellAnswers);
-	return false;
+	return cellAnswers;
+}
+
+
+function toggleStartPause() {
+	if (pauseKey == 0) {
+		pauseTimer();
+		$('#pauseBtn').val('Resume');
+		pauseKey = 1;
+	}
+	else {
+		startTimer();
+		$('#pauseBtn').val('Pause');
+		pauseKey = 0;		
+	}
+}
+
+function puzzleComplete(){
+	console.log('you did it');
+	pauseTimer();
+	saveGame('yes');
 
 }
 	
