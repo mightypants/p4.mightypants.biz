@@ -123,7 +123,6 @@ class Puzzle {
         $arr_user_answers = str_split($user_answers);
         $arr_solution = str_split($puzzle_solution);
 
-        //print_r($arr_user_answers);
         for ($i = 0; $i < 81; $i++) {
             //if (($arr_user_answers[$i] == $arr_solution[$i]) ||
             //    ($arr_user_answers[$i] == 0) ) {
@@ -138,12 +137,6 @@ class Puzzle {
 
         echo json_encode($check_results);
 
-    }
-
-    public function get_recent_games(){
-        $q = 'SELECT * FROM games where user_id=' . $this->user->user_id;
-        $recent_games = DB::instance(DB_NAME)->select_rows($q); 
-        return $recent_games;
     }
 
 

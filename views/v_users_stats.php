@@ -1,24 +1,19 @@
 <div>
-<h3>User stats</h3>
-<h4>Easy</h4>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<h4>Medium</h4>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<h4>Hard</h4>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
-<p>score</p>
+<?= $user; ?>
+
+<p>Easy</p>
+<p><?= $test[0]; ?></p> 
+
+<p>Medium</p> 
+<p><?= $test[1]; ?></p> 
+
+<p>Hard</p> 
+<p><?= $test[2]; ?></p> 
+
+<p>Run away screaming</p> 
+<p><?= $test[3]; ?></p> 
 
 
-
+<script type="text/javascript" src="/js/form.js"></script>
+<?= $test; ?>
 </div>

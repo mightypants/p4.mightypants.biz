@@ -80,22 +80,18 @@ class users_controller extends base_controller {
 
     public function dashboard($msg = NULL){
         $output = $this->template;
+        $output->contentLeft = View::instance('v_users_stats') ;
+        $output->contentLeft->user = $this->user->user_name ;
+        $output->contentLeft->message = $msg;
+        $output->contentLeft->test = $this->get_complete_games($this->user->user_id); 
+
+
         $output->contentRight = View::instance('v_users_dashboard') ;
-        $output->contentLeft = View::instance('v_users_stats');
-        $output->contentRight->message = $msg;
+        
 
-        $recent_games = $this->get_recent_games(); 
+        //$completed_games = $this->get_complete_games($this->user->user_id); 
 
-        if ($this->user) {
-            $banner_right = $this->user->user_name;
-        }
-        else {
-            $banner_right = View::instance('v_users_login') ;
-        }
-
-        $output->banner_right = $banner_right;
-        $output->contentRight->recent_games = $recent_games;
-
+       
         echo $output;
         //echo $msg;
     }
@@ -130,6 +126,66 @@ class users_controller extends base_controller {
             }
         }
         return $recent_games;
+    }
+
+    public function get_complete_games(){
+        $user_select = '';
+        $average_times = array();
+
+        if ($this->user) {
+            $user_select = ' AND u.user_id=' . $this->user->user_id;
+        }
+
+        for ($i = 0; $i < 4; $i++) { 
+            $total_time = 0;
+            
+            $q = 'SELECT count(*) FROM games g JOIN users u ON g.user_id=u.user_id 
+            JOIN puzzles p ON g.puzzle_id=p.puzzle_id 
+            WHERE p.difficulty=' . $i . $user_select; 
+
+            $count = DB::instance(DB_NAME)->select_field($q);
+
+            $q = 'SELECT g.time FROM games g JOIN users u ON g.user_id=u.user_id 
+            JOIN puzzles p ON g.puzzle_id=p.puzzle_id 
+            WHERE p.difficulty=' . $i . $user_select; 
+
+            $games = DB::instance(DB_NAME)->select_rows($q);
+
+            
+            if ($games) {
+                //add the time from each game to get a total
+                foreach ($games as $game) {
+                    $total_time = $total_time + $game['time'];
+                }
+                $average_time = $total_time / $count;
+                $min = floor($average_time / 60);
+                $sec = $average_time - ($min * 60);
+
+                if ($sec < 10) {
+                    $sec = '0' + $sec;
+                }
+
+                $display_time = //TODO;
+                
+                array_push($average_times, $average_time); 
+            }
+            else {
+                array_push($average_times, 9999);
+            }    
+
+            
+
+            //echo $games[150]['time'];
+            //print_r($games);
+            
+        }
+        //return $average_time;
+        //print_r($games);
+        return $average_times;
+    }
+
+    public function get_average_times() {
+        
     }
 
     public function validateLength($fieldValue, $min, $max) {

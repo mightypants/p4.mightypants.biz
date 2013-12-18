@@ -14,14 +14,20 @@ class index_controller extends base_controller {
 	-------------------------------------------------------------------------------------------------*/
 	public function index($message = NULL) {
 		
+		if ($this->user) {
+			Router::redirect("/users/dashboard");
+		}
+		
 		$output = $this->template;
 		$output->contentRight = View::instance('v_index_index') ;
 		$output->contentRight->message = $message;
-		$output->contentLeft = View::instance('v_users_login');
+		$output->contentLeft = View::instance('v_users_login') ;
 		
 		if (!$this->user) {
 			$output->banner_right = View::instance('v_users_login') ;
 		}
+
+		//TODO: add redirect
 
 		# Now set the <title> tag
 		$output->title = "jDoku";

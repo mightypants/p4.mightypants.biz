@@ -19,7 +19,7 @@
 <body>	
 
 	<div id="nav">
-        <!--<?php if(isset($banner_right)) echo $banner_right; ?>-->
+       
 
 	</div>
 	<div id="wrapper">
