@@ -15,7 +15,7 @@
 
 .loginfield {
     display:block;
-    width: 100px;
+    width: 180px;
     height: 12px;
     margin: 10px 5px;
     padding: 6px;
@@ -58,8 +58,7 @@
 }
 
 #loginBtn {
-    margin: 5px;
-  
+    margin: 0px 7px;
 }
 
 .submitBtn:hover {

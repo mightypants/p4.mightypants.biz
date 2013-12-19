@@ -25,7 +25,16 @@ $("#startPuzzle").click(function(){
 	$("#contentRight").fadeIn('slow');
 
 	return false;
-}); 
+});
+
+$('.loadGameLink').click(function(){  
+    var loadUrl = '/puzzles/load_puzzle/' + $(this).attr('href');
+    $("#contentRight").css('display','none');
+	$("#contentRight").html(ajax_load).load(loadUrl);
+	$("#contentRight").fadeIn('slow');
+
+	return false;
+});  
 
 $('.difficultySelect').click(function(){
 	setDifficulty(this);

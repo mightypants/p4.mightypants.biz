@@ -1,9 +1,10 @@
 #puzzle {
 	position: relative;;
 	width: 355px;
-	margin: 0 auto;
+	margin-left: 50px;
 	padding: 10px;
 	background-color: #4a5a99;
+	float: left;
 }
 
 #hidePuzzle {
@@ -59,8 +60,26 @@
 	border: 0px;
 }
 
+#console {
+	width: 150px;
+	margin: 0 40px;
+	float: left;
+}
+
+#timer {
+	margin-bottom: 20px;
+	padding: 3px 7px;
+	background-color: #000;
+	border: 2px solid #417D7F;
+	text-align: center;
+	font-size: 1.4em;
+	color: #eee;
+}
+
 .puzzleBtn {
-	margin: 10px;
+	display: block;
+	width: 150px;
+	margin: 5px 0;
     padding: 5px 12px;
     background-color: #417D7F;
     border-radius: 25px;

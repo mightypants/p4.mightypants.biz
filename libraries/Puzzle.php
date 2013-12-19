@@ -123,6 +123,7 @@ class Puzzle {
         $arr_user_answers = str_split($user_answers);
         $arr_solution = str_split($puzzle_solution);
 
+        //ifs commented out to force all correct to test win condition
         for ($i = 0; $i < 81; $i++) {
             //if (($arr_user_answers[$i] == $arr_solution[$i]) ||
             //    ($arr_user_answers[$i] == 0) ) {
@@ -137,6 +138,10 @@ class Puzzle {
 
         echo json_encode($check_results);
 
+    }
+
+    public function load_game($token) {
+        
     }
 
 

@@ -11,9 +11,9 @@ body {
 }
 
 h1 {}
-h2 {margin: 0 0 15px 0; font-size: 1.5em}
-h3 {font-size: 1.1em}
-h4 {}
+h2 {margin: 0 0 15px 0; font-size: 1.5em; color: #417D7F;}
+h3 {font-size: 1.3em; color: #417D7F;}
+h4 {margin: 20px 0 2px 0; font-size: 1.1em; color: #417D7F;}
 
 p {
 	margin: 0 5px 15px 0;
@@ -62,17 +62,30 @@ a:hover, a:active {
 }
 
 #contentLeft {
-	width: 200px;
-	margin: 10px 0 20px 20px;
+	width: 230px;
+	margin: 10px 0 20px 15px;
 	float: left;
 }
 
 #contentRight {
-	width: 730px;
-	margin-top: 10px;
+	width: 670px;
+	margin: 20px 15px 20px 15px;
 	float: right;
 }
 
+.stat {
+	margin: 2px 0;
+	font-size: .8em;
+}
+
+#difficultySelection {
+	width: 250px;
+	float: left;
+}
+
+#currentGames {
+	float: left;
+}
 
 #foot {
 	margin: 5px 0;

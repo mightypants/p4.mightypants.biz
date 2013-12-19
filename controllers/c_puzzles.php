@@ -3,6 +3,7 @@ class puzzles_controller extends base_controller {
 
     public $puzzle;
 
+    //TODO: change to accept difficulty as a param
     public function __construct() {
         parent::__construct();
         $this->puzzle = new Puzzle(0, $this->user);
@@ -29,6 +30,10 @@ class puzzles_controller extends base_controller {
         $game_token = $_COOKIE['game_token'];
 
         $this->puzzle->save_game($time, $answers, $complete, $game_token);
+    }
+
+    public function load_game($game_token){
+        $this->puzzle->load_game($game_token);
     }
 
     public function check_answers(){
