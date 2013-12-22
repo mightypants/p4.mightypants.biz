@@ -1,7 +1,7 @@
 #puzzle {
 	position: relative;;
 	width: 355px;
-	margin-left: 50px;
+	margin-left: 30px;
 	padding: 10px;
 	background-color: #4a5a99;
 	float: left;
@@ -14,6 +14,41 @@
 	width: 365px;
 	height: 365px;
 	background-color: #000;
+}
+
+#puzzleMsg {
+	width: 120px;
+	margin: 150px auto;
+	padding: 10px;
+	background-color: #fff;
+	border: 4px solid #aaa;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #aaa;	
+}
+
+#puzzleMsg:hover {
+	border-color: #10f010;
+    color: #10f010;
+	cursor: pointer;
+}
+
+#winMsg {
+	display: none;
+	position: absolute;
+	top: 160px;
+	left: 70px;
+	width: 200px;
+	padding: 10px;
+	background-color: #fff;
+	border: 3px solid #10f010;
+	border-radius: 20px;
+	text-align: center;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #10f010;	
 }
 
 .cell {
@@ -62,7 +97,7 @@
 
 #console {
 	width: 150px;
-	margin: 0 40px;
+	margin: 0 35px;
 	float: left;
 }
 
@@ -92,4 +127,14 @@
    background-color: #10f010;
     color: #fff; 
     cursor:pointer;
+}
+
+.puzzleBtn:focus {
+	outline: none;
+}
+
+#results {
+	height: 15px;
+	margin: 10px 30px;
+
 }

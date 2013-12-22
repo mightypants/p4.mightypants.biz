@@ -1,4 +1,4 @@
-<p>Please complete all fields to create your account.  Usernames and passwords must be 5-16 characters long and contain only alphanumeric characters.  A valid e-mail address is required.</p>
+<p>Please complete all fields to create your account.  Usernames and passwords must be 5-16 characters long and contain only alphanumeric characters.  Passwords must contain at least one letter and one number.  A valid e-mail address is required.</p>
 
 <form id="signupFrm" method="POST">
     <div class="reqField">
@@ -29,5 +29,5 @@
 
 
 <br class="clearfloat" />
-<div id="message"></div>
+<div id="message" class="error"></div>
 <script type="text/javascript" src="/js/form.js"></script>

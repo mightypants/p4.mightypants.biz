@@ -13,10 +13,10 @@ body {
 h1 {}
 h2 {margin: 0 0 15px 0; font-size: 1.5em; color: #417D7F;}
 h3 {font-size: 1.3em; color: #417D7F;}
-h4 {margin: 20px 0 2px 0; font-size: 1.1em; color: #417D7F;}
+h4 {margin: 20px 0 2px 0; font-size: 1em; }
 
 p {
-	margin: 0 5px 15px 0;
+	margin: 0 5px 25px 0;
 	font-size: 1em;
 }
 
@@ -62,14 +62,16 @@ a:hover, a:active {
 }
 
 #contentLeft {
-	width: 230px;
-	margin: 10px 0 20px 15px;
+	width: 190px;
+	margin: 20px 0 30px 15px;
+	padding: 10px 20px;
+	background-color: #eef;
 	float: left;
 }
 
 #contentRight {
-	width: 670px;
-	margin: 20px 15px 20px 15px;
+	width: 630px;
+	margin: 20px 35px 20px 35px;
 	float: right;
 }
 
@@ -78,13 +80,62 @@ a:hover, a:active {
 	font-size: .8em;
 }
 
+#examplePuzzle {
+	float: left;
+	width: 272px;
+	height: 274px;
+}
+
+#newGame {
+	float: left;
+	margin: 0 0 0 60px;
+}
+
 #difficultySelection {
 	width: 250px;
 	float: left;
 }
 
+.difficultySelect {
+	display: block;
+	width: 200px;
+    padding: 5px 12px;
+    margin: 5px 0;
+    border: 3px solid #fff;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.difficultySelect:focus {
+	outline: none;
+}
+
+.selected {
+	border-color: #aac;
+}
+
+#easy {background-color: #21de0d;}
+#medium {background-color: #f3f600;}
+#hard {background-color: #f6bf00;}
+#vhard {background-color: #f63a00;}
+
+.disabledBtn {
+	background-color: red;
+	opacity: .3;
+}
+
+.difficultySelect:hover {
+    cursor: pointer;
+}
+
+#startPuzzle {
+
+}
+
 #currentGames {
-	float: left;
+	float: right;
 }
 
 #foot {
@@ -92,4 +143,14 @@ a:hover, a:active {
 	text-align: center;
 	color: #fff;
 	font-size: .9em;
+}
+
+.spaceInlineLeft {
+	display: inline-block;
+	width: 150px;
+}
+
+.spaceInlineRight {
+	display: inline-block;
+	float: right;
 }

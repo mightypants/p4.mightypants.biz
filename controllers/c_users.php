@@ -3,6 +3,7 @@ class users_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
+        //setcookie("game_token", "", strtotime('-1 year'), '/');
     } 
 
     public function signup($message = NULL) {
@@ -28,7 +29,7 @@ class users_controller extends base_controller {
             echo 'The e-mail or username you have selected is already in use.';
         }
         elseif (!empty($formErrors)) {
-            echo 'There were errors with some of your entries.';
+            echo 'There were errors with some of your entries.  Please observe the requirements above.  OBSERVE THEM!';
         }
         else {
             # More data we want stored with the user
@@ -42,8 +43,8 @@ class users_controller extends base_controller {
             $_POST['token'] = sha1(TOKEN_SALT.$_POST['user_name'].Utils::generate_random_string()); 
 
             # Insert this user into the database
-            //$user_id = DB::instance(DB_NAME)->insert('users', $_POST); 
-            Router::redirect("/users/login/success");
+            $user_id = DB::instance(DB_NAME)->insert('users', $_POST); 
+            echo '<p class="success">Your account has been created.  Huzzah.  Please login to get started.</p>';
             
         }
     }
@@ -71,14 +72,17 @@ class users_controller extends base_controller {
 
         #redirect with error if token failed, otherwise redirect to user profile
         if(!$token) {
-            echo 'bad';             
+            echo '<p class="error">Are you sure that\'s the right username and password? <br /> (It isn\'t, trust me.)</p>';             
         } else {
             setcookie("token", $token, strtotime('+1 year'), '/');
-            Router::redirect('/users/dashboard');
+            echo 'success';
         }
     }
 
     public function dashboard($msg = NULL){
+        if (!$this->user) {
+            Router::redirect('/');
+        }
         $output = $this->template;
         $output->contentLeft = View::instance('v_users_stats') ;
         $output->contentLeft->user = $this->user->user_name ;
@@ -112,6 +116,7 @@ class users_controller extends base_controller {
             WHERE u.user_id=" . $this->user->user_id . " 
             AND p.difficulty=" . $i . "
             AND g.complete='no' 
+            AND g.time IS NOT NULL
             ORDER BY game_id DESC" ; 
 
             $games = DB::instance(DB_NAME)->select_rows($q);

@@ -3,18 +3,17 @@ class puzzles_controller extends base_controller {
 
     public $puzzle;
 
-    //TODO: change to accept difficulty as a param
     public function __construct() {
         parent::__construct();
-        $this->puzzle = new Puzzle(0, $this->user);
+        $this->puzzle = new Puzzle($this->user);
     } 
 
-    public function start_puzzle(){
+    public function start_puzzle($difficulty = 0){
         if ($this->user) {
-            $this->puzzle->create_game();
+            $this->puzzle->create_game($difficulty);
         }
         else {
-            $this->puzzle->load_puzzle();
+            $this->puzzle->load_puzzle($difficulty);
         }
 
 		$output = View::instance('v_puzzles_puzzle');    	
@@ -30,14 +29,27 @@ class puzzles_controller extends base_controller {
         $game_token = $_COOKIE['game_token'];
 
         $this->puzzle->save_game($time, $answers, $complete, $game_token);
+
+        echo '<p class="success">Your progress has been saved.';
     }
 
     public function load_game($game_token){
         $this->puzzle->load_game($game_token);
+        $output = View::instance('v_puzzles_puzzle');       
+        $output->puzzle_cells = $this->puzzle->load_puzzle_html();
+        $output->time = $this->puzzle->time;
+        echo $output;
     }
 
     public function check_answers(){
          $this->puzzle->check_answers($_POST['answers'], $_COOKIE['game_token']);
+    }
+
+    public function get_time() {
+        if ($_COOKIE['game_token']) {
+            $q = "SELECT time FROM games WHERE game_token='" . $_COOKIE['game_token'] . "'";
+            echo DB::instance(DB_NAME)->select_field($q); 
+        }
     }
 
 

@@ -1,7 +1,10 @@
-<div id="puzzle"><?= $puzzle_cells; ?><div id="hidePuzzle"></div></div>
+<div id="puzzle"><?= $puzzle_cells; ?>
+	<div id="hidePuzzle"><p id="puzzleMsg">Start</p></div>
+	<div id="winMsg">PUZZLE SOLUTION'D!</div>
+</div>
 
 <div id="console">
-	<div id="timer">0:00</div>
+	<div id="timer">:</div>
 	<input type="button" id="pauseBtn" class="puzzleBtn" value="Start" />
     <input type="button" id="clearCell" class="puzzleBtn" value="Clear Cell" />
     <input type="button" id="clearAll" class="puzzleBtn" value="Clear All" />
@@ -10,6 +13,8 @@
 </div>
 
 
+<br class="clearfloat" />
 <div id="results"></div>
+
 
 <script type="text/javascript" src="/js/game.js"></script>

@@ -6,20 +6,18 @@ $.ajaxSetup ({
     cache: false  
 });  
     
-var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+var ajax_load = "<img src='/images/tooltip.png' alt='loading...' />";  
       
 //load() functions  
 $(".ajaxLink").click(function(){  
     var loadUrl = $(this).attr('href');
-    $("#contentRight").css('display','none');
 	$("#contentRight").html(ajax_load).load(loadUrl);
-	$("#contentRight").fadeIn('slow');
 
 	return false;
 }); 
 
 $("#startPuzzle").click(function(){  
-    var loadUrl = '/puzzles/start_puzzle';
+    var loadUrl = '/puzzles/start_puzzle/' + difficulty;
 	$("#contentRight").css('display','none');
 	$("#contentRight").html(ajax_load).load(loadUrl);
 	$("#contentRight").fadeIn('slow');
@@ -28,7 +26,7 @@ $("#startPuzzle").click(function(){
 });
 
 $('.loadGameLink').click(function(){  
-    var loadUrl = '/puzzles/load_puzzle/' + $(this).attr('href');
+    var loadUrl = '/puzzles/load_game/' + $(this).attr('href');
     $("#contentRight").css('display','none');
 	$("#contentRight").html(ajax_load).load(loadUrl);
 	$("#contentRight").fadeIn('slow');
@@ -40,7 +38,7 @@ $('.difficultySelect').click(function(){
 	setDifficulty(this);
 });
 
-var difficulty;
+var difficulty = 0;
 
 var diffMap = {'easy': 0, 'medium': 1, 'hard': 2, 'vhard': 3}
 
@@ -49,14 +47,24 @@ function setDifficulty(btn){
 		unsetDifficulty();
 	}
 
+	console.log(btn.id);
 	difficulty = diffMap[btn.id];
-	btn.src = '/images/' + btn.id + '_set.png';
+	$(btn).addClass('selected');
+	console.log(difficulty);
+
 }
 
 function unsetDifficulty(){
+
 	var diffBtns = $('.difficultySelect');
-	for (btn in diffBtns) {
-		btn.src = '/images/' + btn.id + '.png';
-			console.log(btn.id);
+	for (i = 0; i < diffBtns.length; i++) {
+		$(diffBtns[i]).removeClass('selected');
+			
 	}
+}
+
+
+function disableBtn(btn){
+	$(btn).attr("disabled", "disabled");
+	$(btn).addClass('disabledBtn');
 }

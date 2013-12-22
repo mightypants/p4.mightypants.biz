@@ -1,9 +1,20 @@
+/***********************************************************************************
+global variables and initializers
+***********************************************************************************/
 var solution = [5,1,3,6,9,8,2,4,7,7,6,4,1,5,2,8,3,9,2,9,8,7,3,4,5,6,1,6,5,9,3,2,7,1,8,4,8,4,7,5,6,1,9,2,3,1,3,2,4,8,9,7,5,6,4,7,5,8,1,6,3,9,2,9,8,6,2,7,3,4,1,5,3,2,1,9,4,5,6,7,8];	    
 var elWithFocus;
 var timerSeconds = 0;
 var pauseKey = 1;
+var cookies = document.cookie;
 
+//get time for saved games
+$.post('/puzzles/get_time',function(response){
+		timerSeconds = response;
+});	
 
+if (cookies.indexOf('game_token') == -1) {
+	disableBtn($('#saveGame'));
+}
 
 /***********************************************************************************
 event listeners
@@ -67,7 +78,7 @@ function mapKeys(keyID) {
 		54: 6,
 		55: 7,
 		56: 8,
-		59: 9
+		57: 9
 	}
 	
 	if (keyID in keyMap) {
@@ -156,24 +167,24 @@ function tick(){
 
 function startTimer(){
 	intervalHandle = setInterval(tick, 1000)
-	$('#hidePuzzle').hide();
 
 }
 
 function pauseTimer(){
 	clearInterval(intervalHandle);
-	$('#hidePuzzle').show();
 	loseFocus();
 }
 
 function saveGame(complete){
-	
+	console.log('saved')
 	cellAnswers = collectAnswers();
-
-	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
     var loadUrl = '/puzzles/save_game';
 	
-	$("#results").html(ajax_load).load(loadUrl, {time: timerSeconds, answers: cellAnswers, complete: complete});
+	$("#results").load(loadUrl, {time: timerSeconds, answers: cellAnswers, complete: complete});
+	
+	setTimeout(function(){
+		$('#results').empty();
+	}, 3000);
 	return false;
 }
 
@@ -194,25 +205,33 @@ function collectAnswers() {
 	return cellAnswers;
 }
 
-
 function toggleStartPause() {
 	if (pauseKey == 0) {
 		pauseTimer();
 		$('#pauseBtn').val('Resume');
+		$('#puzzleMsg').text('Resume');
+		$('#hidePuzzle').show();
 		pauseKey = 1;
 	}
 	else {
 		startTimer();
 		$('#pauseBtn').val('Pause');
+		$('#hidePuzzle').hide();
 		pauseKey = 0;		
 	}
 }
 
 function puzzleComplete(){
-	console.log('you did it');
 	pauseTimer();
 	saveGame('yes');
+	$('#winMsg').css('display','block');
 
+	setTimeout(function(){
+		window.location.href = '/users/dashboard';
+	}, 3000);
 }
 	
+
+
+
 

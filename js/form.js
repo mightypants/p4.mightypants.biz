@@ -145,9 +145,15 @@ var loginOptions = {
         $('#results').html("Adding...");
     },
     success: function(response) {   
-        $("#contentRight").css('display','none');
-		$('#contentRight').html(response);	
-		$("#contentRight").fadeIn('slow');
+		if (response == 'success') {
+			window.location.href='/users/dashboard';
+		}
+		else {
+			$('#loginMessage').html(response);
+			setTimeout(function(){
+				$('#loginMessage').empty();
+			}, 3000);
+		}	
     } 
 }; 
 
@@ -161,9 +167,7 @@ var signupOptions = {
         	errorMsg(response);
 		}
 		else {
-			$("#contentRight").css('display','none');
 			$('#contentRight').html(response);	
-			$("#contentRight").fadeIn('fast');
 		}
     } 
 }; 
@@ -173,7 +177,23 @@ function errorMsg(msg){
 }
 
 // Using the above options, ajax'ify the form
-//$('#loginFrm').ajaxForm(loginOptions);
+$('#loginFrm').ajaxForm(loginOptions);
 $('#signupFrm').ajaxForm(signupOptions);
+
+$('.loginfield').focus(function(){
+	$(this).val('');
+	$(this).removeClass('placeholderTxt');
+
+	if (this.id == 'password') {
+		$(this).attr('type', 'password');
+	}
+});
+
+
+
+
+
+
+
 
 
