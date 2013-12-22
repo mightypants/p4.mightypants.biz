@@ -142,7 +142,7 @@ var loginOptions = {
     type: 'POST',
     url: '/users/p_login/',
     beforeSubmit: function() {
-        $('#results').html("Adding...");
+        $('#loginMessage').html("Loading...");
     },
     success: function(response) {   
 		if (response == 'success') {
