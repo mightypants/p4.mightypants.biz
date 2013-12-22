@@ -10,7 +10,7 @@ class Puzzle {
     private $time;
 
 
-    public function __construct($user) {
+    public function __construct($user = NULL) {
         $this->__set('user', $user);
     }
 
@@ -90,9 +90,12 @@ class Puzzle {
 
         $data = array(
             'puzzle_id' => $this->puzzle_id,
-            'user_id' => $this->user->user_id,
             'game_token' => $game_token
         );
+
+        if ($this->user) {
+            $data['user_id'] = $this->user->user_id ; 
+        }
 
         setcookie("game_token", $game_token, strtotime('+1 year'), '/');
         $created_game = DB::instance(DB_NAME)->insert('games', $data);
@@ -142,6 +145,7 @@ class Puzzle {
 
     }
 
+    //loads an existing saved game
     public function load_game($token) {
         $q = "SELECT * FROM games g JOIN puzzles p ON g.puzzle_id=p.puzzle_id 
         WHERE game_token='" . $token . "'";

@@ -14,7 +14,8 @@ $.post('/puzzles/get_time',function(response){
 		}
 });	
 
-if (cookies.indexOf('game_token') == -1) {
+regPlayerToken = /[^_]token/;
+if (!regPlayerToken.test(cookies)) {
 	disableBtn($('#saveGame'));
 }
 
