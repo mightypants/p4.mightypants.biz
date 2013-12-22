@@ -1,7 +1,6 @@
 /***********************************************************************************
 global variables and initializers
 ***********************************************************************************/
-var solution = [5,1,3,6,9,8,2,4,7,7,6,4,1,5,2,8,3,9,2,9,8,7,3,4,5,6,1,6,5,9,3,2,7,1,8,4,8,4,7,5,6,1,9,2,3,1,3,2,4,8,9,7,5,6,4,7,5,8,1,6,3,9,2,9,8,6,2,7,3,4,1,5,3,2,1,9,4,5,6,7,8];	    
 var elWithFocus;
 var timerSeconds = 0;
 var pauseKey = 1;
@@ -14,10 +13,16 @@ $.post('/puzzles/get_time',function(response){
 		}
 });	
 
+//disable save button when no player logged in
 regPlayerToken = /[^_]token/;
 if (!regPlayerToken.test(cookies)) {
 	disableBtn($('#saveGame'));
 }
+
+window.onbeforeunload = function() {
+    return "If you leave now, you'll lose any unsaved progress and be very sad.  :(";
+}
+
 
 /***********************************************************************************
 event listeners
@@ -30,7 +35,6 @@ $('.userCell').click(function(){
 $(document).keydown(function(e){
 	var keyID = (window.event) ? event.which : e.keyCode;
 	enterNum(keyID);
-	console.log(keyID);
 });
 
 $('#clearCell').click(function(){
@@ -58,6 +62,11 @@ $('#hidePuzzle').click(function(){
 	toggleStartPause();
 });
 
+
+/***********************************************************************************
+focus handlers
+***********************************************************************************/
+
 function giveFocus(el){
 	if (elWithFocus != null) {
 		loseFocus();
@@ -71,6 +80,11 @@ function loseFocus(){
 	$(elWithFocus).removeClass('focusCell');
 	elWithFocus = null;
 }
+
+
+/***********************************************************************************
+keyboard entry
+***********************************************************************************/
 
 function mapKeys(keyID) {
 	keyMap = {
@@ -100,6 +114,11 @@ function enterNum(keyPressed){
 
 }
 
+
+/***********************************************************************************
+clear answers, current cell or all cells
+***********************************************************************************/
+
 function clearCell(){
 	$(elWithFocus).empty();
 	$(elWithFocus).removeClass('errorCell');
@@ -107,9 +126,35 @@ function clearCell(){
 }
 
 function clearAll(){
-	$('.userCell').empty();
-	$('.userCell').removeClass('errorCell');	
-	loseFocus();
+	confirmed = warnClearCells();
+
+	if(confirmed) {
+		$('.userCell').empty();
+		$('.userCell').removeClass('errorCell');	
+		loseFocus();
+	}
+}
+
+
+/***********************************************************************************
+check answers
+***********************************************************************************/
+
+function collectAnswers() {
+	var allCells = $('.cell');
+	var cellAnswers = '';
+
+	for (i = 0; i < allCells.length; i++) {
+		var cellAnswer = $('#cell' + i).text();
+		
+		if (!cellAnswer) {
+			cellAnswer = '0';
+		} 
+
+		cellAnswers += cellAnswer;
+	}
+
+	return cellAnswers;
 }
 
 function checkAnswers(remaining){
@@ -154,6 +199,11 @@ function showErrors(results, remaining){
 	}
 }
 
+
+/***********************************************************************************
+timer functions
+***********************************************************************************/
+
 function tick(){
 	timerSeconds++;
 
@@ -179,36 +229,6 @@ function pauseTimer(){
 	loseFocus();
 }
 
-function saveGame(complete){
-	console.log('saved')
-	cellAnswers = collectAnswers();
-    var loadUrl = '/puzzles/save_game';
-	
-	$("#results").load(loadUrl, {time: timerSeconds, answers: cellAnswers, complete: complete});
-	
-	setTimeout(function(){
-		$('#results').empty();
-	}, 3000);
-	return false;
-}
-
-function collectAnswers() {
-	var allCells = $('.cell');
-	var cellAnswers = '';
-
-	for (i = 0; i < allCells.length; i++) {
-		var cellAnswer = $('#cell' + i).text();
-		
-		if (!cellAnswer) {
-			cellAnswer = '0';
-		} 
-
-		cellAnswers += cellAnswer;
-	}
-
-	return cellAnswers;
-}
-
 function toggleStartPause() {
 	if (pauseKey == 0) {
 		pauseTimer();
@@ -225,6 +245,23 @@ function toggleStartPause() {
 	}
 }
 
+
+/***********************************************************************************
+timer functions
+***********************************************************************************/
+
+function saveGame(complete){
+	cellAnswers = collectAnswers();
+    var loadUrl = '/puzzles/save_game';
+	
+	$("#results").load(loadUrl, {time: timerSeconds, answers: cellAnswers, complete: complete});
+	
+	setTimeout(function(){
+		$('#results').empty();
+	}, 3000);
+	return false;
+}
+
 function puzzleComplete(){
 	pauseTimer();
 	saveGame('yes');
@@ -236,6 +273,8 @@ function puzzleComplete(){
 }
 	
 
-
+function warnClearCells() {
+	return confirm('Are you sure you want to clear ALL your answers?  You worked so hard for those.');
+}
 
 

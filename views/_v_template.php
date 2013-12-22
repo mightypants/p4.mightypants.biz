@@ -19,7 +19,7 @@
 <body>	
 
 	<div id="nav">
-       
+       <a href="/"><img id="logo" src="/images/logo.png" alt="jDoku Home" /></a>
 
 	</div>
 	<div id="wrapper">
