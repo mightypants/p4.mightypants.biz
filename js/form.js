@@ -150,12 +150,15 @@ var loginOptions = {
 		}
 		else {
 			$('#loginMessage').html(response);
-			setTimeout(function(){
-				$('#loginMessage').empty();
-			}, 3000);
 		}	
     } 
 }; 
+
+//clear error message in login window when opening sign up page
+$('.signUplink').click(function(){
+	console.log('clicked');
+	$('#loginMessage').empty();
+});
 
 var signupOptions = { 
     type: 'POST',

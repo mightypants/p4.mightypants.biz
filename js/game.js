@@ -27,9 +27,10 @@ $('.userCell').click(function(){
 	giveFocus(this);
 });
 
-$('body').keydown(function(){
-	enterNum(event.which);
-	checkRemainingCells();
+$(document).keydown(function(e){
+	var keyID = (window.event) ? event.which : e.keyCode;
+	enterNum(keyID);
+	console.log(keyID);
 });
 
 $('#clearCell').click(function(){
