@@ -179,7 +179,7 @@ class users_controller extends base_controller {
                 array_push($average_times, $formatted_time); 
             }
             else {
-                array_push($average_times, '(no puzzles completed)');
+                array_push($average_times, '(none completed)');
             }    
         }
         return $average_times;
@@ -204,7 +204,7 @@ class users_controller extends base_controller {
                 array_push($best_times, $formatted_time); 
             }
             else {
-                array_push($best_times, '(no puzzles completed)');
+                array_push($best_times, '(none completed)');
             }    
         }
         return $best_times;
