@@ -1,7 +1,7 @@
 #puzzle {
 	position: relative;;
 	width: 355px;
-	margin-left: 30px;
+	margin-left: 20px;
 	padding: 10px;
 	background-color: #13458A;
 	float: left;
@@ -97,7 +97,7 @@
 
 #console {
 	width: 150px;
-	margin: 0 35px;
+	margin: 0 0 0 50px;
 	float: left;
 }
 
