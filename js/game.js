@@ -113,7 +113,7 @@ function clearAll(){
 function checkAnswers(remaining){
 	cellAnswers = collectAnswers();
 
-	var ajax_load = "<img src='images/tooltip.png' alt='loading...' />";  
+	var ajax_load = "<img src='images/loading.gif' alt='loading...' />";  
     var loadUrl = '/puzzles/check_answers';
 	$.post(loadUrl, {answers: cellAnswers}, function(response){
 		responseArray = JSON.parse(response);
