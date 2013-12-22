@@ -133,7 +133,7 @@ a:hover, a:active {
 }
 
 .disabledBtn {
-	opacity: .3;
+	opacity: .5;
 }
 
 .disabledBtn:hover {

@@ -41,6 +41,10 @@
     font-size: .8em;
 }
 
+#loginMessage {
+    margin: 10px;
+}
+
 
 .reqTextField {
     display: inline-block;
