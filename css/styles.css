@@ -11,8 +11,8 @@ body {
 }
 
 h1 {}
-h2 {margin: 0 0 15px 0; font-size: 1.5em; color: #417D7F;}
-h3 {font-size: 1.3em; color: #417D7F;}
+h2 {margin: 0 0 15px 0; font-size: 1.5em; color: #337CC1;}
+h3 {font-size: 1.3em; color: #337CC1;}
 h4 {margin: 20px 0 2px 0; font-size: 1em; }
 
 p {
@@ -23,11 +23,11 @@ p {
 a:link, a:visited, a:hover, a:active {
 	text-decoration: none;
 	font-size: 1em;
-	color: #417D7F;
+	color: #337CC1;
 }
 
 a:hover, a:active {
-	color: #d1d88d;
+	color: #9ACEF2;
 }
 
 .clearfloat {
@@ -49,10 +49,10 @@ a:hover, a:active {
 	height: 60px;
 	margin: 0 auto;
 	margin-bottom: 0;
-	background-color: #193441;
-	border-bottom: 5px solid #417D7F;
+	background-color: #022259;
+	border-bottom: 5px solid #337CC1;
 	text-align: right;
-	color: #417D7F;
+	color: #337CC1;
 
 }
 
@@ -65,7 +65,8 @@ a:hover, a:active {
 	width: 190px;
 	margin: 20px 0 30px 15px;
 	padding: 10px 20px;
-	background-color: #eef;
+	background-color: #C2E0FF;
+	border-radius: 20px;
 	float: left;
 }
 
@@ -91,9 +92,25 @@ a:hover, a:active {
 	margin: 0 0 0 60px;
 }
 
+#startPuzzle {
+	width: 200px;
+	height: 70px;
+	margin: 0 0 15px 0;
+    background-color: #13458A;
+	font-size: 1.5em;
+	color: #fff;
+}
+
+#startPuzzle:hover {
+	background-color: #10f010;
+}
+
 #difficultySelection {
 	width: 250px;
 	float: left;
+}
+
+#difficultySettings {
 }
 
 .difficultySelect {
@@ -101,6 +118,7 @@ a:hover, a:active {
 	width: 200px;
     padding: 5px 12px;
     margin: 5px 0;
+    background-color: #337CC1;
     border: 3px solid #fff;
     border-radius: 25px;
     font-size: 1em;
@@ -112,27 +130,25 @@ a:hover, a:active {
 	outline: none;
 }
 
-.selected {
-	border-color: #aac;
+.difficultySelect:hover {
+    cursor: pointer;
+    color: #10f010;
 }
 
-#easy {background-color: #21de0d;}
-#medium {background-color: #f3f600;}
-#hard {background-color: #f6bf00;}
-#vhard {background-color: #f63a00;}
+
+
+
+.selected {
+	border-color: #13458A;
+}
 
 .disabledBtn {
 	background-color: red;
 	opacity: .3;
 }
 
-.difficultySelect:hover {
-    cursor: pointer;
-}
 
-#startPuzzle {
 
-}
 
 #currentGames {
 	float: right;

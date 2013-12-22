@@ -9,7 +9,9 @@ var cookies = document.cookie;
 
 //get time for saved games
 $.post('/puzzles/get_time',function(response){
-		timerSeconds = response;
+		if (response > 0) {
+			timerSeconds = response;
+		}
 });	
 
 if (cookies.indexOf('game_token') == -1) {

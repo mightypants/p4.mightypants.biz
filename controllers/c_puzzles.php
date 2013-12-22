@@ -9,6 +9,8 @@ class puzzles_controller extends base_controller {
     } 
 
     public function start_puzzle($difficulty = 0){
+        setcookie("game_token", "", strtotime('-1 year'), '/');
+
         if ($this->user) {
             $this->puzzle->create_game($difficulty);
         }

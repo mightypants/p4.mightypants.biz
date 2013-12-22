@@ -3,7 +3,6 @@ class users_controller extends base_controller {
 
     public function __construct() {
         parent::__construct();
-        //setcookie("game_token", "", strtotime('-1 year'), '/');
     } 
 
     public function signup($message = NULL) {
