@@ -9,9 +9,9 @@ var cookies = document.cookie;
 
 //get time for saved games
 $.post('/puzzles/get_time',function(response){
-		if (response > 0) {
-			timerSeconds = response;
-		}
+	if (response > 0) {
+		timerSeconds = response;
+	}
 });	
 
 //disable save button when no player logged in
