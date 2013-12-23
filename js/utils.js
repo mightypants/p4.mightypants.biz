@@ -1,6 +1,3 @@
-/***********************************************************************************
-ajax links
-***********************************************************************************/
 
 $.ajaxSetup ({  
     cache: false  
@@ -63,8 +60,8 @@ function unsetDifficulty(){
 	}
 }
 
-
 function disableBtn(btn){
 	$(btn).attr("disabled", "disabled");
 	$(btn).addClass('disabledBtn');
+	$(btn).removeClass('puzzleBtn');
 }

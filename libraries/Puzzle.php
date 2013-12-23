@@ -40,6 +40,7 @@ class Puzzle {
 
     }
 
+    //creates divs and their values to be writting to the puzzle area
     public function generate_puzzle_html(){
         $cellHTML = '';
 
@@ -112,8 +113,7 @@ class Puzzle {
         );
 
         
-        DB::instance(DB_NAME)->update("games", $data, "WHERE game_token = '".$game_token."'");
-        
+        DB::instance(DB_NAME)->update("games", $data, "WHERE game_token = '".$game_token."'");      
     }
 
     public function check_answers($user_answers, $g_token){
@@ -139,7 +139,6 @@ class Puzzle {
         }
 
         echo json_encode($check_results);
-
     }
 
     //loads an existing saved game
@@ -188,11 +187,4 @@ class Puzzle {
         }
         return $cellHTML;
     }
-
-
 } # end of the class
-
-
-
-
-

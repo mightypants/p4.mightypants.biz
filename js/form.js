@@ -1,4 +1,6 @@
-
+/***********************************************************************************
+form validation
+***********************************************************************************/
 
 function validateLength(field, min, max) {
 	return field.value.length > min && field.value.length < max; 
@@ -109,6 +111,11 @@ function validateForm(currField) {
 	}
 }
 
+
+/***********************************************************************************
+initialize field validation and tooltips
+***********************************************************************************/
+
 function setupFieldValidation(currField) {
 	currField.onblur = function() {
 		validateForm(currField);
@@ -137,6 +144,10 @@ for (i = 0; i < tooltips.length; i++) {
 	setupToolTips(tooltips[i]);
 }
 
+
+/***********************************************************************************
+ajax forms
+***********************************************************************************/
 
 var loginOptions = { 
     type: 'POST',
@@ -190,12 +201,3 @@ $('.loginfield').focus(function(){
 		$(this).attr('type', 'password');
 	}
 });
-
-
-
-
-
-
-
-
-

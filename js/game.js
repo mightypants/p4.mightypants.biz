@@ -66,6 +66,9 @@ $('#hidePuzzle').click(function(){
 	toggleStartPause();
 });
 
+//$('.disabledBtn').hover(function(){
+//	$('#results').text('You must be logged in to save your progress.')
+//});
 
 /***********************************************************************************
 focus handlers
@@ -148,6 +151,7 @@ function warnClearCells() {
 check answers
 ***********************************************************************************/
 
+//for use with checkAnswers and saveGame
 function collectAnswers() {
 	var allCells = $('.cell');
 	var cellAnswers = '';
@@ -255,7 +259,7 @@ function toggleStartPause() {
 
 
 /***********************************************************************************
-timer functions
+save game
 ***********************************************************************************/
 
 function saveGame(complete){
@@ -275,6 +279,7 @@ function puzzleComplete(){
 	saveGame('yes');
 	$('#winMsg').css('display','block');
 
+	//redirect to dash after completion
 	puzzleCompleted = true;
 	setTimeout(function(){
 		window.location.href = '/users/dashboard';

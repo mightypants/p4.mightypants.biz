@@ -65,15 +65,25 @@ a:hover, a:active {
 	float: left;
 }
 
+.stat {
+	margin: 2px 0;
+	font-size: .8em;
+}
+
 #contentRight {
 	width: 630px;
 	margin: 20px 35px 20px 35px;
 	float: right;
 }
 
-.stat {
-	margin: 2px 0;
-	font-size: .8em;
+.spaceInlineLeft {
+	display: inline-block;
+	width: 120px;
+}
+
+.spaceInlineRight {
+	display: inline-block;
+	float: right;
 }
 
 #examplePuzzle {
@@ -133,6 +143,15 @@ a:hover, a:active {
 
 .disabledBtn {
 	opacity: .5;
+	display: block;
+	width: 150px;
+	margin: 5px 0;
+    padding: 5px 12px;
+    background-color: #337CC1;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
 }
 
 .disabledBtn:hover {
@@ -149,14 +168,4 @@ a:hover, a:active {
 	text-align: center;
 	color: #fff;
 	font-size: .9em;
-}
-
-.spaceInlineLeft {
-	display: inline-block;
-	width: 120px;
-}
-
-.spaceInlineRight {
-	display: inline-block;
-	float: right;
 }

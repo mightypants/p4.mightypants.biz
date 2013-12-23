@@ -13,6 +13,46 @@
     text-align: right;
 }
 
+.reqTextField {
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    margin: 10px 5px;
+    padding: 6px;
+    border: 2px solid #9ACEF2;
+    font-size: .9em;
+}
+
+.textBox {
+    width: 400px;
+    height: 150px;
+    vertical-align: top;
+}
+
+.invalidWarning {
+  display: none;
+  color: #f01010;
+}
+
+.submitBtn {
+    padding: 5px 12px;
+    background-color: #337CC1;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.submitBtn:hover {
+    background-color: #10f010;
+    color: #fff; 
+    cursor:pointer;
+}
+
+#signupBtn {
+    margin: 10px 5px 5px 235px;
+}
+
 .loginfield {
     display:block;
     width: 165px;
@@ -45,49 +85,8 @@
     margin: 10px;
 }
 
-
-.reqTextField {
-    display: inline-block;
-    width: 200px;
-    height: 20px;
-    margin: 10px 5px;
-    padding: 6px;
-    border: 2px solid #9ACEF2;
-    font-size: .9em;
-}
-
-.textBox {
-    width: 400px;
-    height: 150px;
-    vertical-align: top;
-}
-
-.invalidWarning {
-  display: none;
-  color: #f01010;
-}
-
-.submitBtn {
-    padding: 5px 12px;
-    background-color: #337CC1;
-    border-radius: 25px;
-    font-size: 1em;
-    font-weight: bold;
-    color: #fff;
-}
-
-#signupBtn {
-    margin: 10px 5px 5px 235px;
-}
-
 #loginBtn {
     margin: 0px 7px;
-}
-
-.submitBtn:hover {
-    background-color: #10f010;
-    color: #fff; 
-    cursor:pointer;
 }
 
 .error {
@@ -137,10 +136,5 @@
     font-size: .8em;
     color: #333;
 }
-
-.profileTT {
-    left: 372px;
-}
-
 
 
