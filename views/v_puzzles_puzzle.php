@@ -14,6 +14,7 @@
 
 
 <br class="clearfloat" />
+<a href="/" class="returnHome">Go back</a>
 <div id="results"></div>
 
 
