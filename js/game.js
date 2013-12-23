@@ -4,6 +4,7 @@ global variables and initializers
 var elWithFocus;
 var timerSeconds = 0;
 var pauseKey = 1;
+var puzzleCompleted = false;
 var cookies = document.cookie;
 
 //get time for saved games
@@ -20,7 +21,9 @@ if (!regPlayerToken.test(cookies)) {
 }
 
 window.onbeforeunload = function() {
-    return "If you leave now, you'll lose any unsaved progress and be very sad.  :(";
+    if(!puzzleCompleted) {
+    	return "If you leave now, you'll lose any unsaved progress and be very sad.  :(";
+    }
 }
 
 
@@ -35,6 +38,7 @@ $('.userCell').click(function(){
 $(document).keydown(function(e){
 	var keyID = (window.event) ? event.which : e.keyCode;
 	enterNum(keyID);
+	checkRemainingCells();
 });
 
 $('#clearCell').click(function(){
@@ -133,6 +137,10 @@ function clearAll(){
 		$('.userCell').removeClass('errorCell');	
 		loseFocus();
 	}
+}
+
+function warnClearCells() {
+	return confirm('Are you sure you want to clear ALL your answers?  You worked so hard for those.');
 }
 
 
@@ -267,14 +275,12 @@ function puzzleComplete(){
 	saveGame('yes');
 	$('#winMsg').css('display','block');
 
+	puzzleCompleted = true;
 	setTimeout(function(){
 		window.location.href = '/users/dashboard';
 	}, 3000);
 }
 	
 
-function warnClearCells() {
-	return confirm('Are you sure you want to clear ALL your answers?  You worked so hard for those.');
-}
 
 

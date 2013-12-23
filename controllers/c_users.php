@@ -191,8 +191,7 @@ class users_controller extends base_controller {
         for ($i = 0; $i < 4; $i++) { 
             $total_time = 0;
 
-            $games = $this->get_complete_games($i);
-            $count = $this->count_complete_games($i);
+            $games = $this->get_complete_games($i, ' ORDER BY g.time ASC');
 
             if ($games) {
                 //add the time from each game to get a total

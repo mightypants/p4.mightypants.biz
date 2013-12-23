@@ -21,6 +21,9 @@ Puzzle-solving features
 
 Notes to instructor
 - check out the 'solution' column in the 'puzzles' table if you don't want to take the time to solve puzzles while testing
+- There are two test accounts you can use: 
+	- testUser/shhh123 - has completed and saved games so you can check out stats, etc.--the saved "Run away screaming" level puzzle has all but one cell answered so you can test completed puzzle functionality without having to take the time to solve a puzzle from beginning to end
+	- testUser2/shhh123 - has no saved data so you can experiment with a clean slate
 
 
 

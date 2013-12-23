@@ -156,7 +156,6 @@ var loginOptions = {
 
 //clear error message in login window when opening sign up page
 $('.signUplink').click(function(){
-	console.log('clicked');
 	$('#loginMessage').empty();
 });
 
